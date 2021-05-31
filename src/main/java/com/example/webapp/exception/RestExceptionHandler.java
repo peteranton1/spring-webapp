@@ -13,14 +13,15 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({BookNotFoundException.class})
     protected ResponseEntity<Object> handleNotFound(
-            Exception ex, WebRequest request){
+            Exception ex, WebRequest request) {
         return handleExceptionInternal(ex, "Book Not Found",
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
-    @ExceptionHandler({BookMismatchException.class})
+    @ExceptionHandler({BookMismatchException.class,
+            java.lang.Exception.class})
     protected ResponseEntity<Object> handleBadRequest(
-            Exception ex, WebRequest request){
+            Exception ex, WebRequest request) {
         return handleExceptionInternal(ex, ex.getLocalizedMessage(),
                 new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }

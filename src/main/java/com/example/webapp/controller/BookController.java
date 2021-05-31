@@ -6,6 +6,7 @@ import com.example.webapp.model.Book;
 import com.example.webapp.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,17 +16,23 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Book> findAll() {
         return bookRepository.findAll();
     }
 
-    @GetMapping("/title/{bookTitle}")
+    @RequestMapping(value = "/title/{bookTitle}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public Iterable<Book> findByTitle(@PathVariable String bookTitle) {
         return bookRepository.findByTitle(bookTitle);
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(value = "/{id}",
+            method = RequestMethod.GET)
+    @ResponseBody
     public Book findOne(@PathVariable Long id) {
         return bookRepository.findById(id)
                 .orElseThrow(BookNotFoundException::new);
@@ -41,6 +48,7 @@ public class BookController {
     public void delete(@PathVariable Long id) {
         bookRepository.findById(id)
                 .orElseThrow(BookNotFoundException::new);
+        bookRepository.deleteById(id);
     }
 
     @PutMapping("/{id}")
