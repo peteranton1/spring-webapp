@@ -164,7 +164,7 @@ Here are some ideas:
 
 Before TDD, it was the case that the volume of tests usually decreased as the 
 test abstraction level went up from unit tests, integration 
-tests and system tests etc. There were lots of unit tests, fewer regression 
+tests and system tests etc. There were lots of unit tests, fewer integration 
 tests, and so on, forming a pyramid.
 
 Adopting TDD does not mean abandoning this concept. For example, don't turn the 
