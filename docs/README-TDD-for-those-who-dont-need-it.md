@@ -32,7 +32,7 @@ What are you thinking about?
 | **Requirements** | Hand-waving vagueness that is subject to change at the whim of the customer |
 
 The main idea is that you are paid to produce software that meets requirements 
-and is this is as quick and correct as you can. The machinery is just the 
+and do this as quickly and correct as you can. The machinery is just the 
 technologies you use, to achieve that. 
 
 The programming language, framework and paradigm are not relevant to 
