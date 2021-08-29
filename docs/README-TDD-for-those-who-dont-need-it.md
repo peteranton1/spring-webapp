@@ -28,12 +28,12 @@ What are you thinking about?
 
 | **Thinking about** | **Which Means** |
 | ----------- | ---------------------- |
-| **Machinery** | The technologies and approaches you use to mean the requirements. |
+| **Machinery** | The technologies and approaches you use to satisfy the requirements. |
 | **Requirements** | Hand-waving vagueness that is subject to change at the whim of the customer |
 
 The main idea is that you are paid to produce software that meets requirements 
-and is done as quick and as correct as you can. The machinery is just the 
-technologies you use to achieve that. 
+and is this is as quick and correct as you can. The machinery is just the 
+technologies you use, to achieve that. 
 
 The programming language, framework and paradigm are not relevant to 
 the customer. All they really care about is, "does it meet their requirements?"
@@ -70,8 +70,8 @@ Imagine you intend to write the tests at the end. You implement your
 understanding of the requirements until you are satisfied with your 
 implementation. You know you have implemented the requirements. You have 
 done your job. Now it is time to write some tests to keep the manager, or 
-SonarQube happy. It feels like drudgery to write the tests now because 
-you know you have already met the requirement. It feels like extra work.
+SonarQube, happy. It feels like drudgery to write the tests now because 
+you know you have already met the requirements. It feels like extra work.
 If timelines are short, some developers therefore don't do this extra 
 work. 
 
@@ -89,10 +89,12 @@ being found downstream, maybe in production.
 
 ## JUnit or Cucumber?
 
-It doesn't matter. Whichever test technology makes sense. So long as you can 
-express the customer requirements in the test. Sometimes it feels like the 
-customer requirements are too high level to express in a JUnit. This is not 
-usually true. Usually there is a way to express the requirement with 
+Which technology you use for TDD doesn't matter. Whichever test technology 
+makes sense. So long as you can express the customer requirements in the 
+test at a suitable granularity. Sometimes it feels like the customer 
+requirements are too high level to express in a JUnit. This is not usually true. 
+
+Usually there is a way to express the requirement with 
 sufficient granularity that it can be written in a test at a low enough 
 level for the current development task. If it can't be expressed then 
 probably that means the requirements are not known by the developer 
@@ -112,14 +114,14 @@ The TDD cycle should be small enough to be useful. It is disheartening to have
 too many failing tests. Write a few tests for the development you will be doing 
 today if you get no interruptions. But wait. You always get interruptions. 
 
-Well the tests that fail today are the tasks to do today, so when returning 
+Well the tests that fail today are the tasks left to do, so when returning 
 after an interruption, the failing tests remind you where you were up to and 
 what is left to do today. 
 
-Thus there is no need to write all the tests for the project, up front. Just 
-write enough tests to support the next small amount of development you will be 
-doing. How about a few tests for the work you intend to do today only? When 
-those few tests pass, it is time to repeat the cycle for the next day.    
+For this reason, there is no need to write all the tests for the project, up 
+front. Just write enough tests to support the next small amount of development 
+you will be doing. How about a few tests for the work you intend to do today 
+only? When those few tests pass, you have completed your cycle.    
 
 ## Customers should approve tests (yeah, right)
 
