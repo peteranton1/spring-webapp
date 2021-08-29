@@ -18,4 +18,12 @@ public class Book {
     @Column(nullable = false)
     private String author;
 
+    public Book(long id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
+
+    public Book() {
+    }
 }

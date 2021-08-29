@@ -35,19 +35,21 @@ public class BookController {
     @ResponseBody
     public Book findOne(@PathVariable Long id) {
         return bookRepository.findById(id)
-                .orElseThrow(BookNotFoundException::new);
+                .orElseThrow(() -> new BookNotFoundException(
+                        String.format("Book Not found: %d", id)));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book create(@RequestBody Book book) {
+    public Book createBook(@RequestBody Book book) {
         return bookRepository.save(book);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void deleteBook(@PathVariable Long id) {
         bookRepository.findById(id)
-                .orElseThrow(BookNotFoundException::new);
+                .orElseThrow(() -> new BookNotFoundException(
+                        String.format("Book Not found: %d", id)));
         bookRepository.deleteById(id);
     }
 
@@ -55,10 +57,13 @@ public class BookController {
     public Book updateBook(@RequestBody Book book,
                            @PathVariable Long id) {
         if (book.getId() != id) {
-            throw new BookMismatchException();
+            throw new BookMismatchException(
+                    String.format("Book id: %d, url id: %d",
+                            book.getId(), id));
         }
         bookRepository.findById(id)
-                .orElseThrow(BookNotFoundException::new);
+                .orElseThrow(() -> new BookNotFoundException(
+                        String.format("Book Not found: %d", id)));
         return bookRepository.save(book);
     }
 }
