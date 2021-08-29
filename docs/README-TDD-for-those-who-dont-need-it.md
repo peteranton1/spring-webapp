@@ -179,5 +179,6 @@ then this also puts drag on the development.
 
 ## References
 
-[TTD for people who don't need it](https://www.youtube.com/watch?v=a6oP24CSdUg&t=286s)
-[TTD the bad parts](https://www.youtube.com/watch?v=xPL84vvLwXA&t=1013s)
+* [Example project with branch feature/TDD-01a](https://github.com/peteranton1/spring-webapp)
+* [TTD for people who don't need it](https://www.youtube.com/watch?v=a6oP24CSdUg&t=286s)
+* [TTD the bad parts](https://www.youtube.com/watch?v=xPL84vvLwXA&t=1013s)
