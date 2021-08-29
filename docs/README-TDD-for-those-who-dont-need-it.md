@@ -31,38 +31,57 @@ What are you thinking about?
 | **Machinery** | The technologies and approaches you use to mean the requirements. |
 | **Requirements** | Hand-waving vagueness that is subject to change at the whim of the customer |
 
-The main idea is that you are paid to produce software that meets requirements and 
-is done as quick and as correct as you can. The machinery is just the technologies you 
-use to achieve that. The programming language, framework and paradigm are not relevant to 
+The main idea is that you are paid to produce software that meets requirements 
+and is done as quick and as correct as you can. The machinery is just the 
+technologies you use to achieve that. 
+
+The programming language, framework and paradigm are not relevant to 
 the customer. All they really care about is does it meet there requirements.
-Unfortunately the requirements start off vague and even after they are well defined they
-are subject to change in the light of a dynamic business environment. 
+Unfortunately the requirements start off vague and even after they are well 
+defined they are subject to change in the light of a dynamic business environment. 
 
 ## Write down requirements
 
-So what should a developer do in this situation? How about writing down the requirements. 
-Even better than writing the requirements down in English is to write the requirements
-down in code. These are otherwise known as tests. Code is unambiguous and achievable, 
-whereas the requirements as specified by the customer may well not be. 
+So what should a developer do in this situation? How about writing down 
+the requirements. Even better than writing the requirements down in 
+English is to write the requirements down in code. These are otherwise 
+known as tests. Code is unambiguous and achievable, whereas the requirements 
+as specified by the customer may well not be. 
 
 ## Update the written requirements
 
 When requirements change, the requirements in code should change first. 
-This means the implementation will be out of step with the requirements until
-the implementation catches up with the requirements. This means tests fail initially. 
-Tests failing is good. It means once you get the tests to pass by changing the 
-implementation, you know the requirements have been met. 
+This means the implementation will be out of step with the requirements 
+until the implementation catches up with the requirements. This means 
+tests fail initially. Tests failing is good. It means once you get the 
+tests to pass by changing the implementation, you know the requirements 
+have been met. 
 
 ## Failing tests are good
 
 If you have a set of tests which reflect the actual customer requirements 
 this is good. If this is the start of the development then you now have a 
 good roadmap to what is left to do. Once all the tests pass you have met 
-the requirement and you can stop. If you write the tests at the end, then 
-you have already met the requirement, so why do you need to then write the 
-tests? It feels like extra work, since you know that you have met the 
-requirements. If timelines are short, some developers therefore don't do 
-this extra work. This leads to defects being found in production too often. 
+the requirement and you can stop. 
+
+Imagine you intend to write the tests at the end. You implement your 
+understanding of the requirements until you are satisfied with your 
+implementation. You know you have implemented the requirements. You have 
+done your job. Now it is time to write some tests to keep the manager, or 
+SonarQube happy. It feels like drudgery to write the tests now because 
+you know you have already met the requirement. It feels like extra work.
+If timelines are short, some developers therefore don't do this extra 
+work. 
+
+## Test Behaviour
+
+Some developers write tests just to get the code coverage up, rather than 
+testing against requirements. This means that the core requirements may or
+may not have been met. The customer cares about requirements. The code 
+coverage might be really high, but the implementation could be doing 
+something different to what the customer wanted. This leads to defects 
+being found downstream, maybe in production.
+
 
 # Caveat
 
@@ -77,7 +96,7 @@ level for the current development task. If it can't be expressed then
 probably that means the requirements are not known by the developer 
 well enough and there needs to be a deeper requirements gathering exercise. 
 
-## Iterations vs Complete Requirements
+## Just enough tests for a day's work
 
 The usual situation is that not enough detail is known about the problem space
 yet to implement everything required of the development, in one sitting. Also, 
@@ -100,7 +119,7 @@ write enough tests to support the next small amount of development you will be
 doing. How about a few tests for the work you intend to do today only? When 
 those few tests pass, it is time to repeat the cycle for the next day.    
 
-## Customers should approve tests
+## Customers should approve tests (yeah, right)
 
 The basis of behaviour driven tests is that the customer can understand and 
 approve the tests to ensure they correctly test the requirements. Unfortunately
