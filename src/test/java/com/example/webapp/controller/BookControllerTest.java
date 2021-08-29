@@ -79,7 +79,7 @@ class BookControllerTest extends BaseTestCase {
     }
 
     @Test
-    void findByTitle_When_Missing() throws Exception {
+    void findByTitle_When_NotFound() throws Exception {
         doReturn(ImmutableList.of())
                 .when(bookRepository)
                 .findByTitle(TEST_TITLE_1);
@@ -91,7 +91,7 @@ class BookControllerTest extends BaseTestCase {
     }
 
     @Test
-    void findByTitle_When_Available() throws Exception {
+    void findByTitle_When_Found() throws Exception {
         doReturn(ImmutableList.of(BOOK1))
                 .when(bookRepository)
                 .findByTitle(TEST_TITLE_1);
@@ -103,7 +103,19 @@ class BookControllerTest extends BaseTestCase {
     }
 
     @Test
-    void findOne_When_Missing() {
+    void findOne_When_Found() throws Exception {
+        doReturn(Optional.of(BOOK1))
+                .when(bookRepository)
+                .findById(ID_1);
+        String url = BASEURL + "/" + ID_1;
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get(url))
+                .andExpect(status()
+                        .is(HttpStatus.OK.value()));
+    }
+
+    @Test
+    void findOne_When_NotFound() throws Exception {
         doReturn(Optional.empty())
                 .when(bookRepository)
                 .findById(ID_1);
@@ -119,18 +131,6 @@ class BookControllerTest extends BaseTestCase {
         String message = cause.getMessage();
         assertTrue(cause instanceof BookNotFoundException);
         assertEquals(message, expected);
-    }
-
-    @Test
-    void findOne_When_Found() throws Exception {
-        doReturn(Optional.of(BOOK1))
-                .when(bookRepository)
-                .findById(ID_1);
-        String url = BASEURL + "/" + ID_1;
-        mockMvc.perform(MockMvcRequestBuilders
-                        .get(url))
-                .andExpect(status()
-                        .is(HttpStatus.OK.value()));
     }
 
     @Test
