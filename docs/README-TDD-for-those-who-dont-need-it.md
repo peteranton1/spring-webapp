@@ -36,9 +36,11 @@ and is done as quick and as correct as you can. The machinery is just the
 technologies you use to achieve that. 
 
 The programming language, framework and paradigm are not relevant to 
-the customer. All they really care about is does it meet there requirements.
-Unfortunately the requirements start off vague and even after they are well 
-defined they are subject to change in the light of a dynamic business environment. 
+the customer. All they really care about is, "does it meet their requirements?"
+
+Unfortunately the requirements start off vague and even after they are 
+well-defined they are subject to change in the light of a 
+dynamic business environment. 
 
 ## Write down requirements
 
