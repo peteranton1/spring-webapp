@@ -7,6 +7,12 @@ TDD for those who don't need it
 
 Test Driven Development (TDD) is all the rage these days. 
 
+Here is a discussion and some code to talk about TDD and is aimed at the TDD skeptic. 
+
+Code is on GIT branch feature/TDD-01a+b
+
+# Discussion of TDD
+
 ## The TDD Benefits arguments
 
 * Gives you confidence to Refactor
@@ -32,7 +38,7 @@ What are you thinking about?
 | **Requirements** | Hand-waving vagueness that is subject to change at the whim of the customer |
 
 The main idea is that you are paid to produce software that meets requirements 
-and do this as quickly and correct as you can. The machinery is just the 
+and do this as quickly and as correct as you can. The machinery is just the 
 technologies you use, to achieve that. 
 
 The programming language, framework and paradigm are not relevant to 
@@ -131,3 +137,47 @@ customers rarely actually read tests. At least by using a convention like
 cucumber, you *could* show the test to the customer. Maybe it is useful 
 if the only way you can demonstrate the software to the customer is to 
 show them the test and run it to prove it passes. 
+
+## TDD The Bad Parts
+
+It is common in OO teams that every class should have a companion test class, 
+that contains unit tests for that class. This can cause a lot of drag when 
+trying to refactor, because the tests are tightly coupled to the 
+implementation. This is especially true when there is heavy use of mocks for
+dependencies. 
+
+We need to refactor often to keep the code clean. This means one thing we do to 
+clean code (TDD) acts as a drag to another thing we do (refactoring). 
+Refactoring shouldn't be this hard. The problem gets worse the more tests 
+you have at fine granularity. However, a method should be tested. So what 
+should you do about fine grain unit tests?
+
+The jury is out on this, but some common sense should prevail. 
+
+Here are some ideas:
+
+* Write unit tests when you need to.
+* The dogma that every main class needs a test class is not always true.  
+* Be prepared to throw away some test code that is no longer needed after a refactor.
+
+## The test pyramid
+
+Before TDD it was the case that numbers of tests decreased as the level of test
+went up from unit tests, regression tests, integration tests and system tests 
+etc. There were lots of unit tests, fewer regression tests and so on.
+
+Adopting TDD does not mean abandoning this concept. For example, don't turn the 
+pyramid upside down by having lots of system tests and hardly any unit tests.
+
+There are very practical reasons for this pyramid. As the test level increases, 
+the time each test takes goes up, and also the tests are harder to run by 
+developers. An important requirement of tests is that 
+they be fast and easy enough to run that developers can run them often. If 
+the higher level tests take a long time because there are a lot of them, 
+then this also puts drag on the development.  
+
+
+## References
+
+[TTD for people who don't need it](https://www.youtube.com/watch?v=a6oP24CSdUg&t=286s)
+[TTD the bad parts](https://www.youtube.com/watch?v=xPL84vvLwXA&t=1013s)
